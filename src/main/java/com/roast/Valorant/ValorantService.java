@@ -1,34 +1,44 @@
 package com.roast.Valorant;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
+import java.time.Duration;
 import java.util.Map;
 
 @Service
 public class ValorantService {
     private final WebClient webClient;
 
-    public ValorantService() {
-        // 1. Increase the buffer size limit to 16MB
+    public ValorantService(
+            @Value("${valorant.api.base-url:https://api.henrikdev.xyz/valorant}") String baseUrl,
+            @Value("${valorant.api.key:HDEV-838aea69-6af3-4a78-9357-5b35eaf95652}") String apiKey) {
+
         ExchangeStrategies strategies = ExchangeStrategies.builder()
                 .codecs(codecs -> codecs.defaultCodecs().maxInMemorySize(16 * 1024 * 1024))
                 .build();
 
-        // 2. Apply the strategies to the WebClient
         this.webClient = WebClient.builder()
-                .baseUrl("https://api.henrikdev.xyz/valorant")
+                .baseUrl(baseUrl)
                 .exchangeStrategies(strategies)
-                // MAKE SURE TO PASTE YOUR ACTUAL API KEY BACK IN HERE:
-                .defaultHeader("Authorization", "HDEV-838aea69-6af3-4a78-9357-5b35eaf95652")
+                .defaultHeader("Authorization", apiKey)
                 .build();
     }
 
+    /**
+     * Fetches recent match history from HenrikDev v4 matches endpoint.
+     * Uses size=1 to fetch only the most recent match for ultra-fast response.
+     */
     public Map fetchPlayerStats(String region, String name, String tag) {
         return this.webClient.get()
-                .uri("/v4/matches/{region}/pc/{name}/{tag}", region, name, tag)
+                .uri(uriBuilder -> uriBuilder
+                        .path("/v4/matches/{region}/pc/{name}/{tag}")
+                        .queryParam("size", "1")
+                        .build(region, name, tag))
                 .retrieve()
                 .bodyToMono(Map.class)
+                .timeout(Duration.ofSeconds(12))
                 .block();
     }
 }
