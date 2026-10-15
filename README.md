@@ -4,13 +4,15 @@
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
-[![Maven](https://img.shields.io/badge/Maven-3.9+-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
+[![Frontend UI](https://img.shields.io/badge/Frontend-valorant--roast--ui-FF4655?style=for-the-badge&logo=react&logoColor=white)](https://github.com/Piyush-raj24/valorant-roast-ui)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 **A high-performance Spring Boot REST API that queries live Valorant match statistics and serves dynamic, savage, and hilarious performance reviews & roasts.**
 
-[Endpoints](#-api-endpoints) • [Quick Start](#-quick-start) • [Environment Variables](#-configuration) • [Deployment](#-deployment-to-render)
+> 🎮 **Looking for the web interface?** Check out the React UI at [Piyush-raj24/valorant-roast-ui](https://github.com/Piyush-raj24/valorant-roast-ui).
+
+[Endpoints](#-api-endpoints) • [Architecture](#-system-architecture) • [Quick Start](#-quick-start) • [Environment Variables](#-configuration) • [Deployment](#-deployment-to-render)
 
 </div>
 
@@ -28,13 +30,13 @@ Depending on your performance, accuracy, and agent choice, the engine assigns yo
 
 ```mermaid
 flowchart LR
-    Client[valorant-roast-ui] -->|GET /api/roast/{region}/{name}/{tag}| API[RoastController]
-    API --> Service[ValorantService]
-    API --> Engine[RoastEngine]
-    Service -->|size=1 & Bearer Key| HenrikDev[HenrikDev Valorant API v4]
-    HenrikDev -->|Match JSON| Service
-    Engine -->|Calculates Tier + Generates Burns| API
-    API -->|Consolidated JSON| Client
+    Client["valorant-roast-ui (Frontend)"] -->|"GET /api/roast/:region/:name/:tag"| API["RoastController (REST API)"]
+    API --> Service["ValorantService"]
+    API --> Engine["RoastEngine"]
+    Service -->|"size=1 & Bearer Key"| HenrikDev["HenrikDev Valorant API v4"]
+    HenrikDev -->|"Match JSON"| Service
+    Engine -->|"Calculates Tier + Burns"| API
+    API -->|"Consolidated JSON"| Client
 ```
 
 ---
@@ -161,6 +163,12 @@ docker run -p 8080:8080 -e VALORANT_API_KEY=your_key_here valorant-roast-api
 4. Under **Environment Variables**, add:
    - `VALORANT_API_KEY`: *(Your HenrikDev API key)*
 5. Click **Create Web Service**. Render will build and deploy the container on your custom `.onrender.com` URL.
+
+---
+
+## 🔗 Related Repositories
+
+* **Frontend UI**: [Piyush-raj24/valorant-roast-ui](https://github.com/Piyush-raj24/valorant-roast-ui) — React 19 + Vite tactical client with agent portraits, map splashes, sound effects, and card exports.
 
 ---
 
