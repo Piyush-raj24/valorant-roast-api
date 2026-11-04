@@ -8,7 +8,9 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+**Spring Boot REST API that fetches live Valorant stats and generates AI-powered performance roasts**
 **A high-performance Spring Boot REST API that queries live Valorant match statistics and serves dynamic, savage, and hilarious performance reviews & roasts.**
+**java, spring-boot, rest-api, docker, valorant**
 
 > 🎮 **Looking for the web interface?** Check out the React UI at [Piyush-raj24/valorant-roast-ui](https://github.com/Piyush-raj24/valorant-roast-ui).
 
