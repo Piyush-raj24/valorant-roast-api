@@ -1,4 +1,4 @@
-# 🎯 VALORANT ROAST API
+# VALORANT ROAST API
 
 <div align="center">
 
@@ -12,15 +12,15 @@
 **A high-performance Spring Boot REST API that queries live Valorant match statistics and serves dynamic, savage, and hilarious performance reviews & roasts.**
 **java, spring-boot, rest-api, docker, valorant**
 
-> 🎮 **Looking for the web interface?** Check out the React UI at [Piyush-raj24/valorant-roast-ui](https://github.com/Piyush-raj24/valorant-roast-ui).
+> **Looking for the web interface?** Check out the React UI at [Piyush-raj24/valorant-roast-ui](https://github.com/Piyush-raj24/valorant-roast-ui).
 
-[Endpoints](#-api-endpoints) • [Architecture](#-system-architecture) • [Quick Start](#-quick-start) • [Environment Variables](#-configuration) • [Deployment](#-deployment-to-render)
+[Endpoints](#api-endpoints) • [Architecture](#system-architecture) • [Quick Start](#local-development) • [Configuration](#configuration) • [Deployment](#deployment-to-render)
 
 </div>
 
 ---
 
-## 📖 Overview
+## Overview
 
 The **Valorant Roast API** integrates with the unofficial HenrikDev Valorant API (v4) to extract real-time combat stats (Kills, Deaths, Assists, Headshot %, Bodyshot %, Legshot %, Agent played, Map) and runs them through a dynamic **Roast Engine**. 
 
@@ -28,7 +28,7 @@ Depending on your performance, accuracy, and agent choice, the engine assigns yo
 
 ---
 
-## 🏛️ System Architecture
+## System Architecture
 
 ```mermaid
 flowchart LR
@@ -43,7 +43,7 @@ flowchart LR
 
 ---
 
-## 🚀 API Endpoints
+## API Endpoints
 
 ### 1. Health Check
 Checks service uptime and readiness for cloud health probes.
@@ -109,7 +109,7 @@ curl -X GET "http://localhost:8080/api/roast/na/TenZ/SEN"
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Configure settings via `src/main/resources/application.properties` or system environment variables:
 
@@ -120,7 +120,7 @@ Configure settings via `src/main/resources/application.properties` or system env
 
 ---
 
-## 💻 Local Development
+## Local Development
 
 ### Prerequisites
 - **Java 21** or later installed (`java -version`)
@@ -143,7 +143,7 @@ The server will start at `http://localhost:8080`.
 
 ---
 
-## 🐳 Docker Containerization
+## Docker Containerization
 
 ### Build Image:
 ```bash
@@ -157,7 +157,7 @@ docker run -p 8080:8080 -e VALORANT_API_KEY=your_key_here valorant-roast-api
 
 ---
 
-## ☁️ Deployment to Render
+## Deployment to Render
 
 1. Create a new **Web Service** on [Render](https://render.com/).
 2. Connect your GitHub repository: `Piyush-raj24/valorant-roast-api`.
@@ -168,12 +168,12 @@ docker run -p 8080:8080 -e VALORANT_API_KEY=your_key_here valorant-roast-api
 
 ---
 
-## 🔗 Related Repositories
+## Related Repositories
 
 * **Frontend UI**: [Piyush-raj24/valorant-roast-ui](https://github.com/Piyush-raj24/valorant-roast-ui) — React 19 + Vite tactical client with agent portraits, map splashes, sound effects, and card exports.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE) - Copyright (c) 2026 **Piyush Raj**.
